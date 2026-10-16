@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eliza Archives</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="archive">
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  
+  
+  <header class="hero archive-hero" id="top">
+    <a class="archive-intro-link" href="index.html">← birthday card intro</a>
+    <button class="paper-note tiny-note secret-trigger" data-secret="classified" title="suspiciously clickable">classified birthday research</button>
+    <img src="assets/vine.png" class="hero-vine secret-trigger" data-secret="archiveVine" alt="hand-drawn curling vine" title="the vine seems inspectable" />
+    <h1><span>ELIZA</span><br/><span>ARCHIVES</span></h1>
+    <p class="subtitle">A rigorous interdisciplinary investigation into one (1) weird person.</p>
+    <p class="archive-subtitle">click things. suspicion is rewarded. you do not need to find everything.</p>
+    <div class="global-progress-card">
+      <div><strong>Final-analysis threshold:</strong> <span id="required-count">0</span> / <span id="required-total">8</span></div>
+      <div class="progress-track"><span id="progress-fill"></span></div>
+      <div class="discovery-total">Total discoveries found: <strong id="all-found-count">0</strong></div>
+      <div class="discovery-total" data-page-progress="local" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main class="archive-shell standalone-hub">
+    <div class="archive-board page-link-board">
+      <a class="hub-item metaphysics-item" href="metaphysics.html">
+        <img src="assets/cloud-blue.png" alt="blue cloud" />
+        <span>“IT IS WHAT IT IS”</span>
+      </a>
+      <a class="hub-item bean-item" href="beans.html" draggable="false" title="Drag and shake for snacks · click to enter Bean Studies">
+        <span class="bean-icon">bean</span><span>BEAN STUDIES</span>
+        <small class="bean-shake-hint">shake for snacks</small>
+      </a>
+      <a class="hub-item irk-item" href="irk.html">
+        <img src="assets/flower-green.png" alt="green flower" /><span>IRK / ICK LAB</span>
+      </a>
+      <a class="hub-item spectrum-item" href="spectrum.html">
+        <div class="buddy-stars"><img src="assets/sparkle-teal.png" alt="sparkle"/><span class="buddy-line"></span><img src="assets/sparkle-teal.png" alt="sparkle"/></div>
+        <span>SPECTRUM BUDDIES</span>
+      </a>
+      <a class="hub-item memories-item" href="memories.html">
+        <img src="assets/flower-purple.png" alt="purple flower"/><span>SELECTED OBSERVATIONS</span>
+      </a>
+      <a class="hub-item museum-item" id="museum-link" href="museum.html">
+        <span class="museum-frame">?</span><span id="museum-label">MUSEUM</span>
+      </a>
+      <a class="hub-item final-item locked" id="final-link" href="final.html" aria-disabled="true">
+        <img src="assets/heart-pink.png" alt="pink heart"/><span id="final-label">FINAL ANALYSIS — locked</span>
+      </a>
+
+      <button class="loose-secret hand-eye secret-trigger" data-secret="archiveEye" id="archive-eye" title="why is it looking at you?">
+        <img src="assets/hand-eye.png" alt="hand-drawn eye"/>
+      </button>
+      <button class="loose-secret devil-heart secret-trigger" data-secret="devilHeart" id="devil-heart" title="morally ambiguous heart">
+        <img src="assets/heart-devil-tail.png" alt="heart with devil tail"/>
+      </button>
+      <button class="oc-hub secret-trigger curator-walk-host" data-secret="oc" id="oc-home" aria-label="wandering curator">
+        <img id="oc-home-img" src="assets/oc-right.png" alt="OC curator walking around the archive"
+             data-front="assets/oc-front.png" data-front-happy="assets/oc-front-happy.png"
+             data-left="assets/oc-left.png" data-right="assets/oc-right.png" data-back="assets/oc-back.png"/>
+        <span id="oc-home-speech" aria-live="polite"></span>
+      </button>
+    </div>
+    <div class="archive-footnote">
+      <span>the final message only needs 8 discoveries</span>
+      <span>there are deliberately more than 8</span>
+      <button id="reset-progress" class="tiny-reset">reset progress</button>
+    </div>
+  </main>
+
+  <aside id="page-clear" class="page-clear" aria-live="polite">
+    <strong>PAGE CLEAR ✦</strong>
+    <span>all secrets on this page have been found.</span>
+    <a href="archives.html">return to the archives →</a>
+  </aside>
+  <script src="archive-beans.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

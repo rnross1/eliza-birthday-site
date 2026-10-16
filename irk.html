@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irk / Ick Lab — Eliza Archives</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="irk-cloud.css" />
+</head>
+<body data-page="irk">
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  
+    <header class="page-header">
+      <a class="back-link" href="archives.html">← return to the Eliza Archives</a>
+      <div class="page-progress" data-page-progress></div>
+    </header>
+  
+<main class="isolated-page irk-page">
+  <section class="page-card">
+    <p class="kicker">Research Area III</p>
+    <h1>The Irk–Ick Distinction</h1>
+    <p>Current Elizan scholarship treats these as categorically distinct phenomena rather than merely different magnitudes of one annoyance variable.</p>
+    <label for="irk-slider">Two categories. The milder cases meet in the middle.</label>
+    <input id="irk-slider" type="range" min="0" max="100" value="32" aria-describedby="irk-result"/>
+    <div class="scale"><span>IRK <small>serious → mild</small></span><button id="irk-boundary" type="button" disabled aria-label="Investigate the space between irk and ick" aria-expanded="false">???</button><span>ICK <small>mild → serious</small></span></div>
+    <p id="irk-result" class="result" aria-live="polite">Classification: mild irk.</p>
+    <section id="word-sort" class="word-sort hidden" aria-label="Sort the escaped irks and icks">
+      <h2>A small categorical incident</h2>
+      <p>Put each word back on the scale. Bigger words mean stronger reactions.</p>
+      <p class="sort-help">Drag a word to its place, or tap a word and then a slot.</p>
+      <div id="word-scatter" class="word-scatter"></div>
+      <div id="word-scale" class="word-scale" aria-label="Category and intensity scale"></div>
+      <p id="sort-status" role="status">0 / 6 classified.</p>
+    </section>
+    <button class="text-link secret-trigger" data-secret="taxonomy" data-secret-message="SECRET: the taxonomy has survived another challenge.">[ challenge the taxonomy ]</button>
+
+    <div class="pun-lab">
+      <h2>Known linguistic contamination</h2>
+      <p id="bug-line">Something about this system might be <button class="pun-word" id="bugged-word">bugging</button> you.</p>
+      <p id="tick-line" class="hidden">That response seems to have <button class="pun-word" id="ticked-word">ticked</button> something off.</p>
+      <p class="margin-comment" aria-live="polite"><span id="pun-verdict"></span> <span id="pun-aside" class="hidden">(it's a good thing you handle the bugs)</span></p>
+    </div>
+  </section>
+</main>
+  <aside id="page-clear" class="page-clear" aria-live="polite">
+    <strong>PAGE CLEAR ✦</strong>
+    <span>all secrets on this page have been found.</span>
+    <a href="archives.html">return to the archives →</a>
+  </aside>
+  <script src="script.js"></script>
+  <script src="irk-cloud.js"></script>
+</body>
+</html>

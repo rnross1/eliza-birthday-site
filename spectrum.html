@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spectrum Buddies — Eliza Archives</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="spectrum-connection.css" />
+</head>
+<body data-page="spectrum">
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  
+    <header class="page-header">
+      <a class="back-link" href="archives.html">← return to the Eliza Archives</a>
+      <div class="page-progress" data-page-progress></div>
+    </header>
+  
+<main class="isolated-page spectrum-page">
+  <section class="page-card centered">
+    <p class="kicker">Research Area IV</p>
+    <h1>Spectrum Buddies</h1>
+    <p>Earlier literature uses the term “spectrum buddies.” Subsequent scholarship introduced “tism team.”</p>
+    <div class="interactive-constellation" id="constellation">
+      <button class="star-button" id="buddy-star-a" aria-label="First buddy star" aria-pressed="false"><img src="assets/sparkle-teal.png" alt=""/></button>
+      <span class="constellation-line" id="constellation-line" aria-hidden="true"></span>
+      <button class="star-button" id="buddy-star-b" aria-label="Second buddy star" aria-pressed="false"><img src="assets/sparkle-teal.png" alt=""/></button>
+    </div>
+    <p id="buddy-status" class="team-line" role="status">spectrum buddies</p>
+    <p class="constellation-help">Tap both stars to connect. Tap either again to disconnect.</p>
+    <p id="portal-discovery-note" class="hidden"><a href="#buddy-portal">✦ connection made — a portal opened below ↓</a><span>Follow the stars, then drag her into the portal.</span></p>
+    <button class="text-link secret-trigger" data-secret="tismTeam" data-secret-message="SECRET: tism team terminology entered the scholarly record.">[ consult later terminology ]</button>
+    <button id="star-drift" class="tiny-reset">destabilize the constellation</button>
+  </section>
+</main>
+  <aside id="page-clear" class="page-clear" aria-live="polite">
+    <strong>PAGE CLEAR ✦</strong>
+    <span>all secrets on this page have been found.</span>
+    <a href="archives.html">return to the archives →</a>
+  </aside>
+  <script src="spectrum-portal.js"></script>
+  <script src="spectrum-connection.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

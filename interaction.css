@@ -1,0 +1,9 @@
+/* Keep prose selectable; controls and draggable artwork behave like controls. */
+button,[role="button"],.hub-item,.secret-trigger,.text-link,.buddy-portal,.archive-snack,.shy-playground,.bean-rain-zone{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+button img,.hub-item img,.secret-trigger img{-webkit-user-drag:none;user-select:none}
+@media(pointer:coarse){.text-link,.tiny-reset,.pun-word{min-height:44px}.secret-trigger{touch-action:manipulation}}
+@media(max-width:560px){
+ .standalone-hub .archive-board{min-height:1700px}
+ .archive-board .metaphysics-item{top:120px}.archive-board .bean-item{top:300px}.archive-board .irk-item{top:480px}.archive-board .spectrum-item{top:660px}.archive-board .memories-item{top:840px}.archive-board .museum-item{top:1020px}.archive-board .final-item{top:1200px}
+ .archive-board .hand-eye{display:block;left:8%;bottom:100px;width:105px}.archive-board .devil-heart{display:block;right:10%;bottom:100px;width:80px}.archive-board .oc-hub{display:block}
+}

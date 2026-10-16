@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 Bean Not Found</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="bean404">
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  
+    <header class="page-header">
+      <a class="back-link" href="beans.html">← return to Bean Studies</a>
+      <div class="page-progress" data-page-progress></div>
+    </header>
+  
+<main class="isolated-page error-page">
+  <section class="page-card centered error-card">
+    <div class="error-code">404</div>
+    <h1>bean not found</h1>
+    <p>This outcome appears inconsistent with bean supremacy.</p>
+    <button id="error-search" class="scribble-button">look again</button>
+    <div id="error-bean" class="error-bean hidden secret-trigger" data-secret="bean404" data-secret-message="SECRET: bean located. database integrity restored.">bean</div>
+    <p id="error-note" class="soft"></p>
+  </section>
+</main>
+  <aside id="page-clear" class="page-clear" aria-live="polite">
+    <strong>PAGE CLEAR ✦</strong>
+    <span>all secrets on this page have been found.</span>
+    <a href="archives.html">return to the archives →</a>
+  </aside>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+.irk-page .scale{align-items:center;gap:.6rem}
+.scale>span{display:grid;font-family:"Short Stack",cursive;color:var(--purple)}
+.scale>span:last-child{text-align:right;color:var(--rust)}
+.scale small{font-family:"Patrick Hand",sans-serif;font-size:.8rem;color:var(--ink)}
+#irk-boundary{font:inherit;min-width:54px;min-height:46px;border:1px dashed #8f857b;background:transparent;border-radius:50%;color:#80776d;transition:background .2s,box-shadow .2s;cursor:default}
+#irk-boundary:not(:disabled){color:#215c3b;background:#e0efd1;border:2px solid var(--green);box-shadow:0 0 20px #86ba7780;cursor:pointer}
+.word-sort{margin:1.6rem 0;padding:1rem 0;border-block:1px dashed #8e8876}
+.word-sort h2{font-size:1.4rem;margin:.2rem 0}.word-sort p{margin:.5rem 0}.sort-help{font-size:.88rem;opacity:.75}
+.word-scatter{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;min-height:200px;align-items:center;padding:1rem 0}
+.word-sort.complete .word-scatter{display:none}
+.sort-word{font-family:"Short Stack",cursive;font-size:var(--word-size);line-height:1.2;min-width:0;min-height:76px;background:#fbf4df;border:1px dashed transparent;padding:4px;color:var(--purple);cursor:grab;touch-action:none;user-select:none}
+.sort-word[data-kind="ick"]{color:var(--rust)}.sort-word small{display:block;font:14px "Patrick Hand",sans-serif}
+.sort-word[aria-pressed="true"]{border-color:var(--green);background:#e4edda;outline:2px solid #5f9d7455;outline-offset:2px}
+.sort-word:disabled{visibility:hidden}.sort-word.is-dragging{z-index:50;cursor:grabbing;pointer-events:none;box-shadow:3px 3px 0 #2e2c2a33}
+.word-scale{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sort-side>p{font-family:"Short Stack",cursive;font-size:.9rem}.sort-side:last-child>p{text-align:right}
+.sort-slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.sort-slot{font:inherit;font-size:.8rem;padding:6px 2px;min-height:76px;min-width:0;border:1px dashed #7e6b9d;background:#fff8;cursor:pointer}
+.sort-slot span{display:block;font-family:"Short Stack",cursive;font-size:.75rem}.sort-slot.filled{border-style:solid;background:#e1edd8;color:#315a35}
+.sort-slot.drop-ready{outline:3px solid var(--green);outline-offset:1px}
+.sort-slot:disabled{cursor:default}.sort-slot:focus-visible,.sort-word:focus-visible{outline:3px solid var(--green)}
+.irk-page .curator-lane{height:180px;transition:height .3s}
+.irk-page .curator-lane.cloud-escape{height:340px;overflow:hidden}
+.irk-page .curator-lane.cloud-path-known{height:300px}
+.cloud-escape .curator-walker{display:block!important;transition:left 1s,bottom 1s;bottom:25px!important;pointer-events:none}
+.cloud-escape .curator-walker img{animation:none!important}
+.escape-word{position:absolute;bottom:40px;font:clamp(2.5rem,10vw,5rem) "Short Stack",cursive;transition:transform 1.4s ease;color:var(--purple);pointer-events:none}
+.escape-word--irk{left:50%;transform:translateX(calc(-50vw - 100%))}.escape-word--ick{left:50%;transform:translateX(50vw);color:var(--rust)}
+.closing-in .escape-word--irk{transform:translateX(calc(-100% - 58px))}.closing-in .escape-word--ick{transform:translateX(58px)}
+.escape-speech{position:absolute;left:50%;bottom:158px;transform:translateX(-50%);font-size:.95rem;text-align:center;background:var(--paper);padding:.3rem .7rem;border:1px dashed var(--purple);width:max-content;max-width:90%;z-index:5}
+.summon-cloud{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);width:138px;height:62px;border:0;padding:0;background:transparent;cursor:pointer;z-index:6;filter:drop-shadow(0 0 9px #4f87a665)}
+.summon-cloud img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none}
+.summon-cloud span{position:relative;font:16px "Patrick Hand",sans-serif;background:var(--paper);padding:0 4px;color:#286482}
+.escape-rider{position:absolute;width:150px;height:144px;left:calc(50% - 75px);bottom:6px;pointer-events:none;z-index:7}
+.escape-rider .escape-oc{position:absolute;left:39px;bottom:34px;width:72px;height:105px;object-fit:contain}
+.escape-rider .escape-cloud{position:absolute;left:0;bottom:0;width:150px;height:85px;object-fit:cover}
+.wind-path{position:absolute;top:32px;left:50%;transform:translateX(-50%);text-align:center;text-decoration:none;color:#346b83;border:1px dashed #4f87a6;border-radius:50% 40%;padding:.65rem 1.2rem;background:#fbf4dfee;min-width:220px;z-index:8}
+.wind-path::before{content:'〰  〰  〰';display:block;letter-spacing:.6em;color:#4f87a6}.wind-path small{display:block;color:var(--ink)}
+@media(max-width:560px){.word-scale{grid-template-columns:1fr}.sort-side:last-child>p{text-align:left}.sort-word{--word-size:30px!important}.sort-word[data-level="mild"]{--word-size:20px!important}.sort-word[data-level="moderate"]{--word-size:25px!important}.irk-page .curator-lane.cloud-escape{height:320px}}
+@media(prefers-reduced-motion:reduce){.cloud-escape .curator-walker,.escape-word,.irk-page .curator-lane{transition:none}.irk-page .curator-walker{display:block}}

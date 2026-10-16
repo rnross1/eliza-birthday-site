@@ -1,0 +1,21 @@
+.spectrum-page .interactive-constellation{position:relative;justify-content:space-around;isolation:isolate;height:290px}
+.spectrum-page .star-button{--dx:0px;--dy:0px;--turn:0deg;position:relative;z-index:2;flex:0 0 auto;padding:0;transform:translate(var(--dx),var(--dy)) rotate(var(--turn));transition:transform .8s cubic-bezier(.22,.7,.25,1);border-radius:50%}
+.spectrum-page .star-button img{display:block;width:clamp(78px,13vw,125px);pointer-events:none;transition:filter .25s}
+.spectrum-page .star-button.active img{filter:drop-shadow(0 0 9px rgba(95,157,116,.6))}
+.spectrum-page .star-button:focus-visible{outline:2px dashed var(--purple);outline-offset:5px}
+.spectrum-page .constellation-line{position:absolute;z-index:0;transform-origin:0 50%;margin-top:-1.5px;pointer-events:none;transition:border-color .25s,opacity .25s;opacity:.35}
+.spectrum-page .constellation-line.active{opacity:1;box-shadow:0 0 10px rgba(95,157,116,.45)}
+.constellation-help{font-size:.85rem;opacity:.75}.spectrum-page .team-line{font-size:clamp(1.15rem,3.5vw,1.8rem);min-height:2.6em;display:grid;place-items:center;margin:.2rem 0}
+#portal-discovery-note{border:1px dashed var(--purple);padding:.8rem;color:var(--purple);background:rgba(126,107,157,.07)}
+#portal-discovery-note a{font-weight:bold;text-underline-offset:4px}#portal-discovery-note span{display:block;font-size:.85rem;margin-top:.3rem}
+.connection-spark{position:absolute;z-index:3;pointer-events:none;color:var(--purple);font-size:1.5rem;animation:connectionSpark 1s ease-out both}
+.connection-burst .page-card{animation:connectionShake .42s ease-out}
+.connection-burst .star-button img{animation:connectionStar .75s ease-out}
+.connection-burst .portal-ring{animation:portalArrival 1.3s ease-out}
+.connection-burst #portal-discovery-note{animation:portalInvitation 1.3s ease-out}
+@keyframes connectionShake{0%,100%{transform:translate(0,0)}20%{transform:translate(-3px,1px)}40%{transform:translate(3px,-2px)}60%{transform:translate(-2px,1px)}80%{transform:translate(1px,0)}}
+@keyframes connectionStar{35%{transform:scale(1.22);filter:drop-shadow(0 0 18px rgba(95,157,116,.85))}}
+@keyframes connectionSpark{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}15%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(1.1)}}
+@keyframes portalArrival{0%{transform:scale(.45);opacity:.2}50%{transform:scale(1.1);box-shadow:0 0 40px rgba(126,107,157,.7)}100%{transform:scale(1)}}
+@keyframes portalInvitation{35%{background:rgba(126,107,157,.22);box-shadow:0 0 16px rgba(126,107,157,.2)}}
+@media(prefers-reduced-motion:reduce){.spectrum-page .star-button{transition:none}.connection-burst .page-card,.connection-burst .star-button img,.connection-burst .portal-ring,.connection-burst #portal-discovery-note{animation:none}.connection-burst #portal-discovery-note{outline:2px solid var(--purple)}}

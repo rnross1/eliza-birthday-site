@@ -1,0 +1,11 @@
+.cloud-game-page{max-width:800px;margin:auto;padding:1.6rem 1rem 4rem;text-align:center}
+.cloud-game-page h1{color:var(--blue);margin:.2rem 0;font-size:clamp(2.5rem,7vw,4rem)}
+.cloud-paper{border:2px solid var(--ink);box-shadow:7px 7px #2e2c2a22;background:#fbf6e6;padding:1rem}
+.cloud-scores{display:flex;justify-content:space-between;gap:1rem;max-width:480px;margin:0 auto .6rem;color:var(--purple)}
+#cloud-game{display:block;width:100%;max-width:480px;height:auto;margin:auto;border:1px dashed #7a9b9e;touch-action:none;background:linear-gradient(#edf6f4,#fbf4df);cursor:pointer}
+#cloud-game:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+#cloud-game{-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+#cloud-status{min-height:2.8em;margin:.8rem auto;max-width:480px;color:#426981}
+.cloud-controls{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;align-items:center}.cloud-controls button{font-size:1rem}
+.cloud-help{font-size:.85rem;opacity:.8;margin:1.2rem 0 .5rem}
+@media(max-width:560px){.cloud-game-page{padding:1rem .5rem 3rem}.cloud-paper{padding:.7rem}.cloud-controls{gap:.7rem}.cloud-controls button{padding:.5rem .7rem;font-size:.9rem}.cloud-scores{font-size:.9rem}}

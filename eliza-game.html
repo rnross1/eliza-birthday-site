@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>The Eliza Game — Eliza Archives</title><link rel="stylesheet" href="styles.css"/><link rel="stylesheet" href="eliza-game.css"/></head>
+<body data-page="eliza-game">
+ <div id="toast" class="toast" role="status" aria-live="polite"></div>
+ <header class="page-header"><a class="back-link" href="metaphysics.html">← back to what it is</a><div class="page-progress" data-page-progress></div></header>
+ <main class="runner-page">
+  <p class="kicker">an unexpected change of scenery</p><h1>The Eliza Game</h1><p>It is what it is. Keep going anyway.</p>
+  <section class="runner-paper" aria-label="Eliza endless runner">
+   <div class="runner-scores"><span>score <strong id="runner-score">0</strong></span><span>best <strong id="runner-best">0</strong></span></div>
+   <canvas id="eliza-runner" width="800" height="340" tabindex="0" aria-label="Eliza runner. Space or Up to jump; hold Down to duck. P to pause. Jump over beans and duck under low blue clouds."></canvas>
+   <p id="runner-status" role="status">A new planet. Familiar beans. Ready when you are.</p>
+   <div class="runner-controls"><button id="runner-start" class="scribble-button">start running →</button><button id="runner-jump" class="scribble-button">jump ↑</button><button id="runner-duck" class="scribble-button" aria-pressed="false">hold to duck ↓</button><button id="runner-pause" class="tiny-reset" disabled>pause</button></div>
+   <p class="runner-help">Jump over beans. Duck under low clouds; stay grounded beneath high ones.<br/>Space / ↑ to jump · hold ↓ to duck · P to pause. On touch screens, use the buttons.</p>
+   <p class="runner-goal">Some things change after 400.</p>
+  </section>
+ </main>
+ <script src="script.js"></script><script src="eliza-game.js"></script>
+</body>
+</html>

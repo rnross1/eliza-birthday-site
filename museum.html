@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eliza Museum of Art</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="museum">
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  
+    <header class="page-header">
+      <a class="back-link" href="archives.html">← return to the Eliza Archives</a>
+      <div class="page-progress" data-page-progress></div>
+    </header>
+  
+<main class="isolated-page museum-page">
+  <img src="assets/vine.png" class="museum-vine" alt="hand drawn curling vine"/>
+  <section class="page-card wide-card">
+    <p class="kicker">The Extremely Prestigious</p>
+    <h1>Eliza Museum of Art</h1>
+    <p>Current holdings remain incomplete. Curatorial expansion is expected.</p>
+    <div class="museum-grid">
+      <figure class="museum-original"><img src="assets/original-card.png" alt="original birthday card"/><figcaption>Primary source: the card that started this entire project.</figcaption></figure>
+      <figure><img src="assets/hand-eye.png" class="secret-trigger" data-secret="museumEye" data-secret-message="SECRET: the museum is watching back." alt="hand drawn eye"/><figcaption>Untitled Eye. Medium: hand, ink, questionable permanence.</figcaption></figure>
+      <figure><img src="assets/heart-devil-tail.png" alt="heart with devil tail"/><figcaption>Heart with Evidentiary Tail.</figcaption></figure>
+      <figure><img src="assets/vine.png" alt="curling vine"/><figcaption>Extremely Curly Botanical Situation.</figcaption></figure>
+      <figure><img src="assets/flower-green.png" alt="green flower"/><figcaption>Green Botanical Event.</figcaption></figure>
+      <figure><img src="assets/flower-purple.png" alt="purple flower"/><figcaption>Purple Botanical Event.</figcaption></figure>
+      <figure><img src="assets/card-flower-pointed.png" alt="green flower with four pointed petals from the card" loading="lazy"/><figcaption>A Slightly Pointier Botanical Event.</figcaption></figure>
+      <figure><img src="assets/card-star-yellow.png" alt="hand-drawn yellow starburst from the card" loading="lazy"/><figcaption>Small Yellow Optimism.</figcaption></figure>
+      <figure><img src="assets/card-bunny-face.png" alt="little bunny face with pink ears from the card" loading="lazy"/><figcaption>Two Ears. No Further Context.</figcaption></figure>
+      <figure class="curator-study">
+        <button id="curator-turntable" class="curator-turntable" type="button" aria-label="rotate curator study">
+          <img id="curator-turn-img" src="assets/oc-front.png" alt="updated OC curator, front view"/>
+        </button>
+        <figcaption>Curator, possibly unionized. Click to inspect the rotation study.</figcaption>
+      </figure>
+    </div>
+    <button class="text-link secret-trigger" data-secret="museumLabel" data-secret-message="SECRET: the suspiciously over-specific label was indeed suspicious.">[ inspect suspiciously over-specific museum label ]</button>
+  </section>
+</main>
+  <aside id="page-clear" class="page-clear" aria-live="polite">
+    <strong>PAGE CLEAR ✦</strong>
+    <span>all secrets on this page have been found.</span>
+    <a href="archives.html">return to the archives →</a>
+  </aside>
+  <script src="script.js"></script>
+</body>
+</html>

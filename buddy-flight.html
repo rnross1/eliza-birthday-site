@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Buddy Launch — Eliza Archives</title><link rel="stylesheet" href="styles.css"/><link rel="stylesheet" href="buddy-flight.css"/></head>
+<body data-page="buddy-flight">
+ <div id="toast" class="toast" role="status" aria-live="polite"></div>
+ <header class="page-header"><a class="back-link" href="spectrum.html">← back through the buddy portal</a><div class="page-progress" data-page-progress></div></header>
+ <main class="launch-page">
+  <div class="launch-heading"><p class="kicker">an experiment in applied friendship</p><h1>Buddy Launch</h1><p>Some connections require a little momentum.</p></div>
+  <section class="launch-paper" aria-label="Buddy launch minigame">
+   <div class="launch-score"><span id="layout-name"></span><span>launches: <strong id="shot-count">0</strong> · best: <strong id="best-count">—</strong></span></div>
+   <canvas id="buddy-game" width="960" height="560" tabindex="0" aria-label="Pull the curator backward from the slingshot and release to reach the framed buddy. You can also use the angle, power, and launch controls below."></canvas>
+   <p id="game-status" class="game-status" role="status" aria-live="polite">Pull her back, aim, and let go. Reach the portrait to connect the buddies.</p>
+   <div class="launch-controls">
+    <label>angle <output id="angle-value">30°</output><input id="launch-angle" type="range" min="10" max="70" value="30"/></label>
+    <label>power <output id="power-value">83%</output><input id="launch-power" type="range" min="25" max="100" value="83"/></label>
+    <button id="launch-button" class="scribble-button">launch her ↗</button>
+    <button id="retry-shot" class="tiny-reset">reset shot</button>
+    <button id="new-layout" class="tiny-reset">next structure ↻</button>
+    <button id="rebuild-layout" class="tiny-reset">rebuild this one</button>
+   </div>
+   <p class="launch-note">Drag back and release. Clouds drift and slow her down without breaking; aim around them or time your launch. Each portrait is a different distance away, so too much power can overshoot! Blocks resist impacts and keep their damage between shots. Arrow keys adjust aim and power; Space launches.</p>
+  </section>
+ </main>
+ <script src="script.js"></script><script src="buddy-flight.js"></script>
+</body>
+</html>

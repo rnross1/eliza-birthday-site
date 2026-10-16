@@ -1,0 +1,54 @@
+/* Static decorations from the birthday card. They never intercept game input. */
+body{position:relative;isolation:isolate}
+.page-art,.archive-art,.card-garland{pointer-events:none;user-select:none;-webkit-user-select:none}
+.page-art{position:absolute;inset:0;overflow:hidden;z-index:-1}
+.page-art img,.archive-art img{position:absolute;object-fit:contain;width:var(--art-size);height:var(--art-size);left:var(--art-x);top:var(--art-y);transform:translate(-50%,-50%) rotate(var(--art-turn));opacity:var(--art-opacity,.65)}
+.page-art img{width:clamp(52px,var(--art-size),180px);height:clamp(52px,var(--art-size),180px)}
+body .page-card,body .intro-card{background:rgba(251,246,230,.94)}
+body .launch-paper,body .runner-paper{background:rgba(251,246,230,.94)}
+.card-garland{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:68px;margin:-.4rem 0 1.2rem;position:relative}
+.card-garland img{width:var(--doodle-size,55px);height:var(--doodle-size,55px);max-width:18%;object-fit:contain;transform:rotate(var(--doodle-turn,0deg));opacity:.82}
+.card-garland::after{content:'';height:1px;position:absolute;bottom:-8px;left:0;right:0;background:linear-gradient(90deg,transparent,rgba(126,107,157,.22) 20% 80%,transparent)}
+.card-garland--closing{justify-content:center;gap:2rem;height:52px;margin:1.8rem 0 -.5rem}
+.card-garland--closing img{--doodle-size:39px;opacity:.65}
+.card-garland--closing::after{display:none}
+body[data-page="memories"] .card-garland,body[data-page="final"] .card-garland{justify-content:center;gap:clamp(1rem,5vw,3.5rem)}
+body[data-page="memories"] .card-garland img,body[data-page="final"] .card-garland img{opacity:.7}
+body .memory-corner-heart{top:5px;right:max(2%,calc((100% - 1140px)/2));width:50px;z-index:1;transform:rotate(8deg)}
+body .museum-vine{right:12px;width:clamp(50px,calc((100vw - 1060px)/2 - 24px),220px)}
+.archive-art{position:absolute;inset:0;overflow:hidden}
+.archive-hero{overflow:clip}
+body .hero-vine{right:1%;top:1.5rem;transform:rotate(9deg)}
+.archive-board .hub-item{z-index:1}
+.archive-board .loose-secret{z-index:2}
+.archive-hero>.card-garland{width:min(420px,70vw);height:55px;margin:.3rem 0}
+.archive-hero>.card-garland::after{display:none}
+.archive-hero>.card-garland img{--doodle-size:42px}
+body[data-page="intro"] .card-garland{height:50px}
+body[data-page="intro"] .card-garland img{--doodle-size:45px}
+@media(min-width:851px){.archive-board .final-item{bottom:7%}}
+@media(max-width:850px){
+ body .museum-vine{top:5px;right:35px;width:50px}
+ .page-art img{opacity:.4}
+ .archive-art img{--art-size:76px!important}
+ .archive-art img:nth-child(n+5){display:none}
+ .archive-art img:nth-child(1){--art-x:22%!important;--art-y:7%!important}
+ .archive-art img:nth-child(2){--art-x:49%!important;--art-y:6%!important}
+ .archive-art img:nth-child(3){--art-x:77%!important;--art-y:8%!important}
+ .archive-art img:nth-child(4){--art-x:50%!important;--art-y:94%!important}
+}
+@media(max-width:560px){
+ body .hero-vine{width:105px;top:8px;right:0;opacity:.45}
+ .card-garland{height:48px;gap:.5rem;margin:0 0 1.1rem}
+ .card-garland img{--doodle-size:43px}
+ .card-garland--closing{height:38px;margin:1.4rem 0 -.3rem;gap:1.4rem}
+ .card-garland--closing img{--doodle-size:31px}
+ .page-art img{opacity:.32}
+ .archive-art img{--art-size:58px!important}
+ .archive-art img:nth-child(1){--art-y:3.5%!important}
+ .archive-art img:nth-child(2){--art-y:3.2%!important}
+ .archive-art img:nth-child(3){--art-y:3.8%!important}
+ .archive-art img:nth-child(4){--art-y:87%!important}
+ body .memory-corner-heart{top:5px;width:50px}
+}
+@media(max-width:1299px){body .intro-doodle{display:none}}

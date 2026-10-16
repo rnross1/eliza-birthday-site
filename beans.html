@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bean Studies — Eliza Archives</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="bean-studies.css" />
+</head>
+<body data-page="beans">
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  
+    <header class="page-header">
+      <a class="back-link" href="archives.html">← return to the Eliza Archives</a>
+      <div class="page-progress" data-page-progress></div>
+    </header>
+  
+<main class="isolated-page bean-page">
+  <section class="page-card wide-card">
+    <p class="kicker">Research Area II</p>
+    <h1>Bean Studies</h1>
+    <p class="lead">An institution committed to rigorous bean scholarship and absolutely no conflicts of interest.</p>
+
+    <div class="bean-controls">
+      <button id="bean-rain-btn" class="scribble-button">MAKE IT RAIN BEANS</button>
+      <a href="bean-404.html" class="text-link">[ access archived bean database ]</a>
+    </div>
+    <div id="bean-rain-zone" class="bean-rain-zone" aria-label="bean rain arena">
+      <p class="arena-label">bean precipitation zone</p>
+      <div id="rain-hint" class="arena-hint"></div>
+    </div>
+
+    <section class="shy-bean-section">
+      <h2>The evasive bean</h2>
+      <p>There appears to be a bean in containment. Standard pursuit has not been peer reviewed.</p>
+      <div id="shy-playground" class="shy-playground" tabindex="0" aria-label="Evasive bean arena. Approach or tap the bean. After several escapes, try staying still, or touch and hold here. Keyboard: activate the bean to pursue, then hold Space in the arena.">
+        <button id="shy-bean" class="shy-bean">bean</button>
+        <span id="shy-message" class="shy-message">approach carefully</span>
+      </div>
+    </section>
+
+    <section class="quiz-section">
+      <h2>Peer-reviewed bean assessment</h2>
+      <p>You hear a perfectly ordinary statement. What do you do?</p>
+      <div class="quiz">
+        <button data-bean="plain">accept it and move on</button>
+        <button data-bean="white">ask what “good” means</button>
+        <button data-bean="white">identify a hidden normative premise</button>
+        <button data-bean="white">turn it into metaphysics</button>
+      </div>
+      <p id="bean-result" class="result"></p>
+    </section>
+    <p id="bean-time-pun" class="time-pun hidden">what could possibly have <em>bean</em> taking you so long?</p>
+  </section>
+</main>
+  <aside id="page-clear" class="page-clear" aria-live="polite">
+    <strong>PAGE CLEAR ✦</strong>
+    <span>all secrets on this page have been found.</span>
+    <a href="archives.html">return to the archives →</a>
+  </aside>
+  <script src="bean-studies.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Cloud Rider — Eliza Archives</title><link rel="stylesheet" href="styles.css"/><link rel="stylesheet" href="cloud-rider.css"/></head>
+<body data-page="cloud-rider">
+ <div id="toast" class="toast" role="status" aria-live="polite"></div>
+ <header class="page-header"><a class="back-link" href="irk.html">← back to the Irk / Ick Lab</a><div class="page-progress" data-page-progress></div></header>
+ <main class="cloud-game-page">
+  <p class="kicker">somewhere between an irk and an ick</p><h1>Cloud Rider</h1><p>A little lift. A little room to breathe.</p>
+  <section class="cloud-paper" aria-label="Cloud Rider game">
+   <div class="cloud-scores"><span>gaps crossed <strong id="cloud-score" aria-live="polite">0</strong></span><span>best <strong id="cloud-best">0</strong></span></div>
+   <canvas id="cloud-game" width="480" height="600" tabindex="0" aria-label="Cloud Rider. Tap or press Space or Up to rise. Fly between the moving irk and ick word columns. Each gap is one point. P pauses."></canvas>
+   <p id="cloud-status" role="status">Find the space between. Tap to take off.</p>
+   <div class="cloud-controls"><button id="cloud-start" class="scribble-button">take off ↑</button><button id="cloud-flap" class="scribble-button">give her a lift ↑</button><button id="cloud-pause" class="tiny-reset" disabled>pause</button></div>
+   <p class="cloud-help">Tap the rider or anywhere in the sky to rise. Let go to fall.<br/>Space / ↑ gives a lift · P pauses. Clear each moving gap for +1.<br/>The words are solid. The space between them is yours.</p>
+  </section>
+ </main>
+ <script src="script.js"></script><script src="cloud-rider-physics.js"></script><script src="cloud-rider.js"></script>
+</body>
+</html>
