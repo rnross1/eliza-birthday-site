@@ -40,6 +40,10 @@ function initSpectrumConnection(){
    }
  }));
  drift.addEventListener('click',()=>{
+   if(window.matchMedia('(max-width:560px)').matches){
+     const r=scene.getBoundingClientRect();
+     if(r.top<8||r.bottom>window.innerHeight-70)scene.scrollIntoView({behavior:'instant',block:'center'});
+   }
    displaced=!displaced;
    if(displaced){variant=count%variants.length;count++;localStorage.setItem(COUNT,String(count));if(!found.has('starDrift'))addSecret('starDrift');if(count>=3&&!found.has('spectrumDistance'))addSecret('spectrumDistance')}
    drift.textContent=displaced?'stabilize the constellation':'destabilize the constellation';drift.setAttribute('aria-pressed',String(displaced));scene.dataset.variant=displaced?String(variant):'stable';placeStars();render();

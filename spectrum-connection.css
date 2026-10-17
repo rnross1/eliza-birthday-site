@@ -13,6 +13,24 @@
 .connection-burst .star-button img{animation:connectionStar .75s ease-out}
 .connection-burst .portal-ring{animation:portalArrival 1.3s ease-out}
 .connection-burst #portal-discovery-note{animation:portalInvitation 1.3s ease-out}
+@media(max-width:560px){
+ body[data-page="spectrum"] .page-header{padding:.65rem 1rem;gap:.2rem;font-size:.85rem}
+ .spectrum-page{padding:0 .5rem}
+ .spectrum-page .page-card{display:flex;flex-direction:column;padding:.8rem 1rem}
+ .spectrum-page .card-garland{order:0;flex:none;height:30px;margin:0 0 .5rem}
+ .spectrum-page .card-garland img{--doodle-size:28px}
+ .spectrum-page .kicker{order:1;margin:.3rem 0;font-size:.75rem}
+ .spectrum-page h1{order:2;margin:.2rem 0;font-size:2rem;line-height:1.15}
+ .spectrum-page .page-card>p:not([id]):not([class]){order:3;margin:.5rem 0;font-size:1rem}
+ .spectrum-page .interactive-constellation{order:4;flex:none;height:220px;scroll-margin:12px}
+ .spectrum-page .star-button img{width:70px}
+ .spectrum-page #star-drift{order:5;align-self:center;min-height:44px;margin:0;font-size:.9rem}
+ .spectrum-page .team-line{order:6;font-size:1rem;min-height:2.6em;margin:.4rem 0}
+ .spectrum-page .constellation-help{order:7;margin:.2rem 0;font-size:.8rem}
+ .spectrum-page #portal-discovery-note{order:8;margin:.5rem 0;padding:.5rem;font-size:.9rem}
+ .spectrum-page .text-link{order:9;align-self:center;font-size:.85rem}
+ .spectrum-page .card-garland--closing{order:10;margin:.5rem 0 0}
+}
 @keyframes connectionShake{0%,100%{transform:translate(0,0)}20%{transform:translate(-3px,1px)}40%{transform:translate(3px,-2px)}60%{transform:translate(-2px,1px)}80%{transform:translate(1px,0)}}
 @keyframes connectionStar{35%{transform:scale(1.22);filter:drop-shadow(0 0 18px rgba(95,157,116,.85))}}
 @keyframes connectionSpark{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}15%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(1.1)}}

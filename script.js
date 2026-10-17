@@ -3,6 +3,13 @@ const REQUIRED=8;
 const STORAGE='eliza-birthday-secrets-v04';
 let found=new Set(JSON.parse(localStorage.getItem(STORAGE)||'[]'));
 const page=document.body.dataset.page||'intro';
+const pageClear=document.getElementById('page-clear');
+let pageClearDismissed=false;
+if(pageClear){
+ if(page==='archive')pageClear.querySelector('a')?.remove();
+ const close=document.createElement('button');close.type='button';close.className='page-clear-close';close.textContent='×';close.setAttribute('aria-label','Dismiss page clear');
+ close.addEventListener('click',()=>{pageClearDismissed=true;pageClear.classList.remove('show')});pageClear.append(close);
+}
 
 const PAGE_SECRETS={
  archive:['classified','archiveVine','archiveEye','devilHeart','oc','curatorDizzy','beanVanished'],
@@ -45,7 +52,7 @@ function updateAll(){
  const fill=document.getElementById('progress-fill');if(fill)fill.style.width=`${req/REQUIRED*100}%`;
  const all=document.getElementById('all-found-count');if(all)all.textContent=totalFound();
  const fp=document.querySelector('[data-page-progress]');const ids=PAGE_SECRETS[page]||[];if(fp&&ids.length)fp.innerHTML=`${page==='archive'?'Archive':'Page'} secrets: <strong>${pageFound()} / ${ids.length}</strong>${fp.dataset.pageProgress==='local'?'':` · global: ${req}/${REQUIRED} required`}`;
- const pc=document.getElementById('page-clear');if(pc&&ids.length&&pageFound()===ids.length)pc.classList.add('show');
+ if(pageClear)pageClear.classList.toggle('show',!pageClearDismissed&&ids.length>0&&pageFound()===ids.length);
  const finalLink=document.getElementById('final-link');if(finalLink){const lab=document.getElementById('final-label');if(totalFound()>=REQUIRED){finalLink.classList.remove('locked');finalLink.setAttribute('aria-disabled','false');lab.textContent='FINAL ANALYSIS — unlocked'}else{finalLink.classList.add('locked');finalLink.setAttribute('aria-disabled','true');lab.textContent=`FINAL ANALYSIS — ${REQUIRED-totalFound()} more discovery${REQUIRED-totalFound()===1?'':'ies'}`}}
  const locked=document.getElementById('final-locked-message'),content=document.getElementById('final-content');if(locked&&content&&totalFound()>=REQUIRED){locked.classList.add('hidden');content.classList.remove('hidden')}
 }
@@ -186,13 +193,26 @@ if(oc){
    {x:.905,y:.045},{x:.032,y:.045},{x:.032,y:.86}
  ];
  function dims(pt){
+   if(window.matchMedia('(max-width:560px)').matches){
+     return {x:14+(pt.x-.032)/(.905-.032)*(board.clientWidth-oc.offsetWidth-28),y:30+(pt.y-.045)/(.86-.045)*(board.clientHeight-oc.offsetHeight-50)};
+   }
    const maxX=Math.max(0,board.clientWidth-oc.offsetWidth-10),maxY=Math.max(0,board.clientHeight-oc.offsetHeight-10);
    return {x:Math.max(6,Math.min(maxX,pt.x*maxX)),y:Math.max(6,Math.min(maxY,pt.y*maxY))};
  }
  function setSpeechPlacement(){
    if(!speechUntil)return;
    const growth=beansEaten*.18,extraX=oc.offsetWidth*growth/2,extraY=img.offsetHeight*growth/2;
-   const placement=clearBubblePosition({x:pos.x-extraX,y:pos.y-extraY,width:oc.offsetWidth+extraX*2,height:oc.offsetHeight+extraY*2},speechSize,{width:board.clientWidth,height:board.clientHeight},obstacles);
+   let placement=clearBubblePosition({x:pos.x-extraX,y:pos.y-extraY,width:oc.offsetWidth+extraX*2,height:oc.offsetHeight+extraY*2},speechSize,{width:board.clientWidth,height:board.clientHeight},obstacles);
+   if(window.matchMedia('(max-width:560px)').matches){
+     // A nearby, opaque caption is more useful on a phone than a remote clear gap.
+     // During a return spin it may briefly cover a card, but never captures its taps.
+     const rect=board.getBoundingClientRect(),pad=8;
+     const minY=Math.max(pad,-rect.top+pad),maxY=Math.min(board.clientHeight-pad,window.innerHeight-rect.top-pad)-speechSize.height;
+     if(!placement||returning||Math.abs(placement.y-pos.y)>90||placement.y<minY||placement.y>maxY){
+       const above=pos.y-extraY-speechSize.height-8;
+       placement={x:Math.max(pad,Math.min(board.clientWidth-speechSize.width-pad,pos.x+(oc.offsetWidth-speechSize.width)/2)),y:Math.max(minY,Math.min(maxY,above>=minY?above:pos.y+oc.offsetHeight+extraY+8))};
+     }
+   }
    speech.style.visibility=placement?'visible':'hidden';
    if(placement){speech.style.left=(placement.x-pos.x)+'px';speech.style.top=(placement.y-pos.y)+'px'}
  }
@@ -328,11 +348,7 @@ if(oc){
      beanHeld=active;
      if(active){
        oc.classList.add('paused');
-       if(window.matchMedia('(max-width:560px)').matches){
-         const r=board.getBoundingClientRect();oc.classList.add('snack-station');
-         const side=anchor&&anchor.left+anchor.width/2>r.left+r.width/2?route[1]:route[2];
-         pos={x:dims(side).x,y:Math.max(8,Math.min(board.clientHeight-oc.offsetHeight-10,(anchor?anchor.top:160)-r.top-oc.offsetHeight-25))};renderPosition();
-       }else if(!oc.offsetWidth){oc.classList.add('snack-station');pos=dims(route[1]);renderPosition()}
+       if(!oc.offsetWidth){oc.classList.add('snack-station');pos=dims(route[1]);renderPosition()}
      }else{oc.classList.remove('snack-station');if(!beanVanishing&&performance.now()>=ocPauseUntil)oc.classList.remove('paused')}
    },
    feed:()=>{

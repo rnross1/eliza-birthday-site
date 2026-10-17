@@ -8,6 +8,14 @@ function initArchiveBeans({board,oc,img,refresh,hold,feed}){
    return {x:r.left-b.left-board.clientLeft,y:r.top-b.top-board.clientTop,width:r.width,height:r.height};
  }
  function landingSpot(){
+   if(window.matchMedia('(max-width:560px)').matches){
+     // A reserved snack shelf keeps every bean within the same compact board.
+     for(let row=0;row<2;row++)for(let col=0;col<4;col++){
+       const x=board.clientWidth/2-84+col*44,y=board.clientHeight-104+row*42;
+       if(![...snacks].some(bean=>Math.hypot(parseFloat(bean.style.left)-x,parseFloat(bean.style.top)-y)<40))return{x,y};
+     }
+     return null;
+   }
    const card=bounds(box),width=38,height=30;
    const obstacles=[...board.querySelectorAll('.hub-item,.loose-secret')].map(bounds);
    if(oc.offsetWidth){const r=bounds(oc);obstacles.push({x:r.x-35,y:r.y-35,width:r.width+70,height:r.height+70})}
@@ -92,6 +100,7 @@ function initArchiveBeans({board,oc,img,refresh,hold,feed}){
    if(a.el.hasPointerCapture(a.id))a.el.releasePointerCapture(a.id);
    a.el.classList.remove('snack-dragging');oc.classList.remove('bean-ready');
    if(a.moved)a.suppress();
+   if(a.isBox&&window.matchMedia('(max-width:560px)').matches){shift={x:0,y:0};box.style.translate=''}
    if(!a.isBox){
      if(!cancelled&&a.moved&&overCurator(a.el)&&feed()){snacks.delete(a.el);a.el.remove()}
      else if(cancelled){a.el.style.left=a.start.x+'px';a.el.style.top=a.start.y+'px'}
