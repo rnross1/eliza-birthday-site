@@ -18,7 +18,7 @@ const PAGE_SECRETS={
  'bean-supremacy':['memeInspection','supremacyDoctrine'],
  bean404:['bean404'],
  irk:['taxonomy','bugPun','tickPun','cloudRider'],
- 'cloud-rider':['cloudRider'],
+ 'cloud-rider':['cloudRider','cloudFive'],
  spectrum:['buddyConnection','tismTeam','starDrift','buddyPortal','buddyDisconnect','spectrumDistance'],
  'buddy-flight':['buddyReunion'],
  'eliza-game':['elizaArrival','eliza400'],
@@ -26,7 +26,56 @@ const PAGE_SECRETS={
  museum:['museumEye','museumLabel','curatorTurn'],
  final:[]
 };
+const ALL_SECRETS=new Set(Object.values(PAGE_SECRETS).flat());
+const COMPLETION_VERSION=[...ALL_SECRETS].sort().join('|');
+const COMPLETION_STORAGE='eliza-all-secrets-celebrated';
+let completionTimer=0,celebrationTimer=0,achievement=null,confetti=null;
+const achievementMotion=matchMedia('(prefers-reduced-motion: reduce)');
+function allSecretsFound(){return [...ALL_SECRETS].every(id=>found.has(id))}
+function stopAchievementEffects(){
+ clearTimeout(celebrationTimer);document.body.classList.remove('achievement-celebrating');confetti?.remove();confetti=null;
+}
+function dismissAchievement(){stopAchievementEffects();achievement?.remove();achievement=null}
+function showAllSecretsAchievement(){
+ if(!allSecretsFound())return;
+ clearTimeout(completionTimer);completionTimer=0;
+ dismissAchievement();
+ achievement=document.createElement('section');achievement.className='all-secrets-achievement';achievement.setAttribute('aria-label','All secrets found achievement');
+ achievement.innerHTML=`<button type="button" class="achievement-close" aria-label="Dismiss all secrets achievement">×</button><div class="achievement-art" aria-hidden="true"><img src="assets/flower-purple.png" alt=""><img src="assets/card-star-yellow.png" alt=""><img src="assets/flower-green.png" alt=""></div><div role="status"><p class="achievement-kicker">THE ARCHIVES ARE OFFICIALLY OVER-INVESTIGATED</p><h2>Every secret found!</h2><p><strong>${ALL_SECRETS.size} / ${ALL_SECRETS.size} discoveries.</strong> Every detour. Every little oddity.</p><p>You found all the things I hid for you, Eliza. ♡</p></div>`;
+ // Normal document flow: never covers a game, navigation, or the mobile curator.
+ const main=document.querySelector('main');if(main)main.before(achievement);else document.body.append(achievement);
+ achievement.querySelector('button').addEventListener('click',dismissAchievement);
+ achievement.scrollIntoView({behavior:achievementMotion.matches?'instant':'smooth',block:'center'});
+ localStorage.setItem(COMPLETION_STORAGE,COMPLETION_VERSION);
+ if(achievementMotion.matches)return;
+ document.body.classList.add('achievement-celebrating');
+ confetti=document.createElement('div');confetti.className='achievement-confetti';confetti.setAttribute('aria-hidden','true');
+ const art=['card-star-yellow.png','flower-purple.png','flower-green.png','heart-pink.png','sparkle-teal.png'];
+ const count=matchMedia('(max-width:560px)').matches?22:34;
+ for(let i=0;i<count;i++){
+  const piece=document.createElement('img');piece.src='assets/'+art[i%art.length];piece.alt='';piece.style.cssText=`--fall-x:${3+Math.random()*94}vw;--fall-delay:${Math.random()*1.2}s;--fall-time:${2.6+Math.random()}s;--fall-turn:${Math.random()*500-250}deg;--fall-size:${18+Math.random()*17}px`;confetti.append(piece);
+ }
+ document.body.append(confetti);celebrationTimer=setTimeout(stopAchievementEffects,5000);
+}
+function updateCompletion(){
+ const count=document.getElementById('all-found-count');if(count)count.textContent=`${[...ALL_SECRETS].filter(id=>found.has(id)).length} / ${ALL_SECRETS.size}`;
+ const complete=allSecretsFound(),card=document.querySelector('.global-progress-card');
+ let badge=document.getElementById('all-secrets-badge');
+ if(complete&&card&&!badge){badge=document.createElement('button');badge.id='all-secrets-badge';badge.className='all-secrets-badge';badge.type='button';badge.textContent='✦ every secret found — celebrate!';badge.addEventListener('click',showAllSecretsAchievement);card.append(badge)}
+ if(!complete){clearTimeout(completionTimer);completionTimer=0;dismissAchievement();badge?.remove();return}
+ if(completionTimer||achievement||localStorage.getItem(COMPLETION_STORAGE)===COMPLETION_VERSION)return;
+ const whenReady=()=>{
+  completionTimer=0;if(!allSecretsFound())return;
+  const busy=document.hidden||document.querySelector('canvas[data-state="playing"],canvas[data-state="running"],canvas[data-state="flying"],canvas[data-state="aiming"],.bean-vanishing,.snack-dragging,.returning');
+  if(busy){completionTimer=setTimeout(whenReady,500);return}
+  showAllSecretsAchievement();
+ };
+ completionTimer=setTimeout(whenReady,400);
+}
+achievementMotion.addEventListener('change',()=>{if(achievementMotion.matches)stopAchievementEffects()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&achievement)dismissAchievement()});
 const msg={
+ cloudFive:'SECRET: five gaps, zero categories. Cloud Rider has risen above the distinction.',
  cloudRider:'SECRET: between an irk and an ick, she found a little lift. Cloud Rider discovered.',
  elizaArrival:'SECRET: it is what it is. Apparently, it is a space detour.',eliza400:'SECRET: over 400. Still becoming. Still going.',
  buddyDisconnect:'really, bro?',spectrumDistance:'SECRET: different coordinates. Same wavelength. Friendship spans the whole spectrum.',
@@ -55,12 +104,13 @@ function updateAll(){
  if(pageClear)pageClear.classList.toggle('show',!pageClearDismissed&&ids.length>0&&pageFound()===ids.length);
  const finalLink=document.getElementById('final-link');if(finalLink){const lab=document.getElementById('final-label');if(totalFound()>=REQUIRED){finalLink.classList.remove('locked');finalLink.setAttribute('aria-disabled','false');lab.textContent='FINAL ANALYSIS — unlocked'}else{finalLink.classList.add('locked');finalLink.setAttribute('aria-disabled','true');lab.textContent=`FINAL ANALYSIS — ${REQUIRED-totalFound()} more discovery${REQUIRED-totalFound()===1?'':'ies'}`}}
  const locked=document.getElementById('final-locked-message'),content=document.getElementById('final-content');if(locked&&content&&totalFound()>=REQUIRED){locked.classList.add('hidden');content.classList.remove('hidden')}
+ updateCompletion();
 }
 
 document.querySelectorAll('.secret-trigger:not(#oc-home)').forEach(el=>el.addEventListener('click',()=>addSecret(el.dataset.secret,el.dataset.secretMessage)));
 document.querySelectorAll('[data-toggle]').forEach(btn=>btn.addEventListener('click',()=>document.getElementById(btn.dataset.toggle)?.classList.toggle('open')));
 const finalLink=document.getElementById('final-link');if(finalLink)finalLink.addEventListener('click',e=>{if(totalFound()<REQUIRED){e.preventDefault();showToast(`final analysis sealed — ${REQUIRED-totalFound()} more discovery${REQUIRED-totalFound()===1?'':'ies'} needed`)}});
-const reset=document.getElementById('reset-progress');if(reset)reset.addEventListener('click',()=>{if(!window.confirm('Reset every discovered secret and all birthday-site progress on this browser?'))return;found=new Set();localStorage.removeItem(STORAGE);document.getElementById('page-clear')?.classList.remove('show');updateAll();showToast('discovery progress reset')});
+const reset=document.getElementById('reset-progress');if(reset)reset.addEventListener('click',()=>{if(!window.confirm('Reset every discovered secret and all birthday-site progress on this browser?'))return;found=new Set();localStorage.removeItem(STORAGE);localStorage.removeItem(COMPLETION_STORAGE);document.getElementById('page-clear')?.classList.remove('show');updateAll();showToast('discovery progress reset')});
 
 // Intro curator: autonomous blinking while idle; clicking runs a short jump animation.
 (function initIntroCurator(){

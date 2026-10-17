@@ -8,7 +8,7 @@
  function flap(){if(state==='paused')return;if(state!=='playing')reset();flight.flap()}
  function pause(){if(state==='playing'){setState('paused');status.textContent='Paused. A moment above it all.'}else if(state==='paused'){setState('playing');last=performance.now();accumulator=0;status.textContent='Find the space between.'}}
  function finish(){setState('over');status.textContent=flight.cause==='words'?`Caught between words. ${flight.score} ${flight.score===1?'gap':'gaps'} crossed. Try again?`:`A little ${flight.cause==='ceiling'?'too much':'more'} lift. ${flight.score} ${flight.score===1?'gap':'gaps'} crossed. Try again?`}
- function update(dt){flight.step(dt);if(flight.score!==lastScore){lastScore=flight.score;pointAt=flight.time;scoreEl.textContent=lastScore;canvas.dataset.score=lastScore;if(lastScore>best){best=lastScore;bestEl.textContent=best;localStorage.setItem(BEST,String(best))}}if(flight.over)finish()}
+ function update(dt){flight.step(dt);if(flight.score!==lastScore){lastScore=flight.score;pointAt=flight.time;scoreEl.textContent=lastScore;canvas.dataset.score=lastScore;if(lastScore>best){best=lastScore;bestEl.textContent=best;localStorage.setItem(BEST,String(best))}if(lastScore>=5&&!found.has('cloudFive')){addSecret('cloudFive');status.textContent='SECRET UNLOCKED: five gaps! You rose above the distinction.'}}if(flight.over)finish()}
  function wordColumn(x,y,w,h,word){
    if(h<=0)return;ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();ctx.fillStyle=word==='IRK'?'#7e6b9d0d':'#b9694f0d';ctx.fillRect(x,y,w,h);
    ctx.fillStyle=word==='IRK'?'#74608f':'#a45641';ctx.textAlign='center';ctx.font='bold 27px "Short Stack",sans-serif';
